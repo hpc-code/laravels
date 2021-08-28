@@ -11,6 +11,7 @@ use Hhxsv5\LaravelS\Swoole\Events\ServerStopInterface;
 use Hhxsv5\LaravelS\Swoole\Events\WorkerErrorInterface;
 use Hhxsv5\LaravelS\Swoole\Events\WorkerStartInterface;
 use Hhxsv5\LaravelS\Swoole\Events\WorkerStopInterface;
+use Hhxsv5\LaravelS\Swoole\Events\WorkerExitInterface;
 use Hhxsv5\LaravelS\Swoole\InotifyTrait;
 use Hhxsv5\LaravelS\Swoole\Process\CustomProcessTrait;
 use Hhxsv5\LaravelS\Swoole\Process\ProcessTitleTrait;
@@ -160,6 +161,14 @@ class LaravelS extends Server
 
         // Fire WorkerStart event
         $this->fireEvent('WorkerStart', WorkerStartInterface::class, func_get_args());
+    }
+    
+    public function onWorkerExit(HttpServer $server, $workerId)
+    {
+        parent::onWorkerExit($server, $workerId);
+
+        // Fire WorkerStop event
+        $this->fireEvent('WorkerExit', WorkerExitInterface::class, func_get_args());
     }
 
     public function onWorkerStop(HttpServer $server, $workerId)
