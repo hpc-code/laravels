@@ -79,6 +79,7 @@ class Server
         $this->swoole->on('ManagerStart', [$this, 'onManagerStart']);
         $this->swoole->on('ManagerStop', [$this, 'onManagerStop']);
         $this->swoole->on('WorkerStart', [$this, 'onWorkerStart']);
+        $this->swoole->on('WorkerExit', [$this, 'onWorkerExit']);
         $this->swoole->on('WorkerStop', [$this, 'onWorkerStop']);
         $this->swoole->on('WorkerError', [$this, 'onWorkerError']);
         $this->swoole->on('PipeMessage', [$this, 'onPipeMessage']);
@@ -280,6 +281,10 @@ class Server
     }
 
     public function onWorkerStop(HttpServer $server, $workerId)
+    {
+    }
+    
+    public function onWorkerExit(HttpServer $server, $workerId)
     {
     }
 
