@@ -1,10 +1,10 @@
 {
-  "name": "hhxsv5/laravel-s",
+  "name": "hpc-code/laravel-s",
   "type": "library",
   "license": "MIT",
   "support": {
-    "issues": "https://github.com/hhxsv5/laravel-s/issues",
-    "source": "https://github.com/hhxsv5/laravel-s"
+    "issues": "https://github.com/hpc-code/laravels/issues",
+    "source": "https://github.com/hpc-code/laravels"
   },
   "description": "🚀 LaravelS is an out-of-the-box adapter between Swoole and Laravel/Lumen.",
   "keywords": [
