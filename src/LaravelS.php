@@ -67,7 +67,7 @@ class LaravelS extends Server
 
         // Fire ServerStart event
         if (isset($this->conf['event_handlers']['ServerStart'])) {
-            Laravel::autoload($this->laravelConf['root_path']);
+            $this->laravel = $this->initLaravel($this->laravelConf, $this->swoole);
             $this->fireEvent('ServerStart', ServerStartInterface::class, [$this->swoole]);
         }
     }
@@ -183,7 +183,7 @@ class LaravelS extends Server
     {
         parent::onWorkerError($server, $workerId, $workerPId, $exitCode, $signal);
 
-        Laravel::autoload($this->laravelConf['root_path']);
+        $this->laravel = $this->initLaravel($this->laravelConf, $this->swoole);
 
         // Fire WorkerError event
         $this->fireEvent('WorkerError', WorkerErrorInterface::class, func_get_args());
