@@ -67,7 +67,7 @@ class LaravelS extends Server
 
         // Fire ServerStart event
         if (isset($this->conf['event_handlers']['ServerStart'])) {
-            $this->laravel = $this->initLaravel($this->laravelConf, $this->swoole);
+            Laravel::autoload($this->laravelConf['root_path']);
             $this->fireEvent('ServerStart', ServerStartInterface::class, [$this->swoole]);
         }
     }
